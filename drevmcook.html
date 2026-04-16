@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DrevmCook · Recettes Ayurvédiques Guadeloupe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-900: #173404;
+  --green-800: #27500A;
+  --green-700: #3B6D11;
+  --green-600: #639922;
+  --green-100: #C0DD97;
+  --green-50:  #EAF3DE;
+  --teal-700:  #0F6E56;
+  --teal-50:   #E1F5EE;
+  --teal-800:  #085041;
+  --amber-700: #BA7517;
+  --amber-50:  #FAEEDA;
+  --amber-800: #633806;
+  --blue-700:  #185FA5;
+  --blue-50:   #E6F1FB;
+  --blue-800:  #0C447C;
+  --purple-700:#534AB7;
+  --purple-50: #EEEDFE;
+  --purple-800:#3C3489;
+  --gray-700:  #5F5E5A;
+  --gray-50:   #F1EFE8;
+  --gray-800:  #444441;
+  --coral-700: #993C1D;
+  --coral-50:  #FAECE7;
+  --coral-800: #711B0C;
+  --bg:        #F7F5EF;
+  --surface:   #FFFFFF;
+  --text:      #1C1C1A;
+  --text-2:    #5C5C58;
+  --text-3:    #9C9C96;
+  --border:    rgba(0,0,0,0.08);
+  --border-2:  rgba(0,0,0,0.14);
+  --radius:    12px;
+  --radius-sm: 8px;
+  --shadow:    0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.05);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: var(--green-700);
+  padding: 1.5rem 2rem 1.25rem;
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-mark {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.logo-text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 600;
+  color: white; letter-spacing: -0.02em;
+}
+.logo-text p { font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 1px; }
+.header-badge {
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  padding: 4px 12px; border-radius: 20px;
+  font-size: 11px; white-space: nowrap;
+}
+
+/* ── NAV TABS ── */
+.main-nav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: flex; gap: 0; overflow-x: auto;
+}
+.nav-tab {
+  padding: 14px 20px; font-size: 13px; font-weight: 500;
+  color: var(--text-2); cursor: pointer; border: none;
+  background: none; border-bottom: 2px solid transparent;
+  white-space: nowrap; transition: all .15s;
+}
+.nav-tab:hover { color: var(--text); }
+.nav-tab.active { color: var(--green-700); border-bottom-color: var(--green-700); }
+
+/* ── LAYOUT ── */
+.page { display: none; padding: 2rem; max-width: 900px; margin: 0 auto; }
+.page.active { display: block; }
+
+/* ── SECTION TITLE ── */
+.sec { font-size: 11px; font-weight: 500; text-transform: uppercase;
+  letter-spacing: .07em; color: var(--text-3);
+  margin-bottom: 10px; margin-top: 24px; }
+.sec:first-child { margin-top: 0; }
+
+/* ── MONTH STRIP ── */
+.month-strip {
+  display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 1.25rem;
+}
+.m-btn {
+  padding: 5px 11px; font-size: 11px; border-radius: 20px;
+  cursor: pointer; border: 1px solid var(--border-2);
+  background: var(--surface); color: var(--text-2);
+  font-family: 'DM Sans', sans-serif;
+  transition: all .12s;
+}
+.m-btn:hover:not(.active) { background: var(--green-50); }
+.m-btn.active { color: white; border-color: transparent; }
+
+/* ── SEASON CHIPS ── */
+.season-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.s-chip {
+  padding: 6px 14px; font-size: 12px; border-radius: 20px;
+  cursor: pointer; border: 1px solid var(--border-2);
+  background: var(--surface); color: var(--text-2);
+  font-family: 'DM Sans', sans-serif; transition: all .15s;
+}
+.s-chip:hover:not(.active) { background: var(--bg); }
+.s-chip.active { color: white; border-color: transparent; }
+
+/* ── INFO BAR ── */
+.info-bar { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 1rem; }
+.info-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 12px 14px;
+}
+.info-card .lbl { font-size: 11px; color: var(--text-3); margin-bottom: 3px; }
+.info-card .val { font-size: 13px; font-weight: 500; }
+
+/* ── PRODUITS ── */
+.pills-wrap { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
+.pill { font-size: 12px; padding: 4px 10px; border-radius: 10px; }
+
+/* ── RECIPE GRID ── */
+.rec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 10px; }
+.rec-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden; cursor: pointer;
+  transition: box-shadow .15s, transform .15s;
+}
+.rec-card:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
+.rc-stripe { height: 4px; }
+.rc-body { padding: 12px 14px; }
+.rc-cat {
+  font-size: 10px; padding: 2px 8px; border-radius: 8px;
+  display: inline-block; margin-bottom: 5px; font-weight: 500;
+}
+.rc-new {
+  font-size: 9px; padding: 1px 6px; border-radius: 6px;
+  background: var(--green-50); color: var(--green-800);
+  margin-left: 4px; vertical-align: middle;
+}
+.rec-card h3 { font-size: 13px; font-weight: 500; margin-bottom: 3px; line-height: 1.35; }
+.rec-card p { font-size: 11px; color: var(--text-2); line-height: 1.45; }
+.rc-local { font-size: 10px; color: var(--green-700); margin-top: 4px; }
+
+/* ── SEARCH ── */
+.search-bar {
+  display: flex; gap: 8px; margin-bottom: 1.25rem;
+}
+.search-bar input {
+  flex: 1; padding: 10px 14px; font-size: 14px;
+  border: 1px solid var(--border-2); border-radius: var(--radius-sm);
+  background: var(--surface); color: var(--text);
+  font-family: 'DM Sans', sans-serif; outline: none;
+  transition: border-color .15s;
+}
+.search-bar input:focus { border-color: var(--green-600); }
+
+/* ── STATS BAR ── */
+.stats-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.stat {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 6px 12px;
+  font-size: 12px; color: var(--text-2);
+}
+.stat span { font-weight: 500; color: var(--text); }
+
+/* ── WEEK MENU ── */
+.week-grid { display: flex; flex-direction: column; gap: 6px; }
+.day-row {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+}
+.day-hdr {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; cursor: pointer;
+  border-bottom: 1px solid transparent; transition: border-color .1s;
+}
+.day-hdr:hover { background: var(--bg); }
+.day-hdr.open { border-bottom-color: var(--border); }
+.day-label { font-size: 13px; font-weight: 500; min-width: 88px; }
+.day-saison { font-size: 10px; padding: 2px 8px; border-radius: 8px; flex-shrink: 0; }
+.day-chips { display: flex; gap: 5px; flex-wrap: wrap; flex: 1; }
+.day-chip {
+  font-size: 11px; background: var(--bg); color: var(--text-2);
+  padding: 3px 8px; border-radius: 5px; white-space: nowrap;
+  max-width: 160px; overflow: hidden; text-overflow: ellipsis;
+}
+.day-toggle { font-size: 10px; color: var(--text-3); margin-left: auto; flex-shrink: 0; }
+.day-body {
+  display: none; padding: 10px 14px;
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 8px;
+}
+.day-body.collapsed { display: none; }
+.meal-card {
+  border-radius: 8px; padding: 9px 11px;
+  border: 1px solid var(--border); border-left-width: 3px;
+}
+.mc-slot { font-size: 10px; text-transform: uppercase; letter-spacing: .05em; color: var(--text-3); margin-bottom: 2px; }
+.mc-name { font-size: 12px; font-weight: 500; cursor: pointer; color: var(--text); line-height: 1.35; }
+.mc-name:hover { color: var(--green-700); }
+.mc-info { font-size: 10px; color: var(--text-2); margin-top: 2px; }
+
+/* ── COURSES ── */
+.progress-bar { height: 5px; background: var(--bg); border-radius: 3px; margin-bottom: 1rem; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--green-700); border-radius: 3px; transition: width .4s ease; }
+.courses-actions { display: flex; align-items: center; gap: 8px; margin-bottom: 1rem; flex-wrap: wrap; }
+.courses-stat { font-size: 13px; color: var(--text-2); }
+.btn {
+  padding: 7px 14px; font-size: 12px; border-radius: var(--radius-sm);
+  cursor: pointer; border: 1px solid var(--border-2);
+  background: var(--surface); color: var(--text-2);
+  font-family: 'DM Sans', sans-serif; transition: all .12s;
+}
+.btn:hover { background: var(--bg); }
+.btn-primary { background: var(--green-700); color: white; border-color: var(--green-700); }
+.btn-primary:hover { background: var(--green-800); }
+
+.cat-section {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden; margin-bottom: 10px;
+}
+.cat-hdr {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 11px 14px;
+}
+.cat-name { font-size: 13px; font-weight: 500; }
+.cat-count { font-size: 11px; padding: 2px 8px; border-radius: 8px; }
+.cat-items { padding: 0 14px 10px; }
+.item-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: opacity .1s;
+}
+.item-row:last-child { border-bottom: none; }
+.item-row:hover { opacity: .8; }
+.item-check {
+  width: 19px; height: 19px; border-radius: 5px; flex-shrink: 0;
+  border: 1.5px solid var(--border-2);
+  display: flex; align-items: center; justify-content: center;
+  transition: all .15s;
+}
+.item-check.done { background: var(--green-700); border-color: var(--green-700); }
+.item-check.done::after {
+  content: ''; display: block; width: 5px; height: 9px;
+  border-right: 2px solid white; border-bottom: 2px solid white;
+  transform: rotate(45deg) translate(-1px,-2px);
+}
+.item-name { font-size: 13px; flex: 1; }
+.item-name.done { text-decoration: line-through; color: var(--text-3); }
+.item-qty { font-size: 11px; color: var(--text-2); white-space: nowrap; }
+.item-uses { font-size: 10px; color: var(--green-700); white-space: nowrap; }
+
+/* ── PAR INGREDRIENT ── */
+.ingr-nav { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.25rem; }
+.ingr-pill {
+  padding: 5px 12px; font-size: 12px; border-radius: 14px;
+  cursor: pointer; border: 1px solid var(--border-2);
+  background: var(--surface); color: var(--text-2);
+  font-family: 'DM Sans', sans-serif; transition: all .12s;
+}
+.ingr-pill:hover:not(.active) { background: var(--green-50); }
+.ingr-pill.active { background: var(--green-700); color: white; border-color: var(--green-700); }
+.ingr-count { font-size: 10px; opacity: .7; }
+
+/* ── MODAL / DETAIL ── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5); z-index: 200;
+  align-items: flex-start; justify-content: center;
+  padding: 2rem 1rem; overflow-y: auto;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--surface); border-radius: var(--radius);
+  width: 100%; max-width: 560px;
+  box-shadow: var(--shadow-lg); overflow: hidden;
+  animation: modalIn .2s ease;
+}
+@keyframes modalIn { from { transform: translateY(16px); opacity: 0; } to { transform: none; opacity: 1; } }
+.modal-hdr {
+  padding: 1.1rem 1.3rem;
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;
+}
+.modal-hdr h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 600; color: white; line-height: 1.3;
+}
+.modal-meta { font-size: 11px; color: rgba(255,255,255,.75); margin-top: 2px; }
+.modal-close {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(255,255,255,.2); border: none; cursor: pointer;
+  color: white; font-size: 15px; display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0; transition: background .1s;
+}
+.modal-close:hover { background: rgba(255,255,255,.35); }
+.modal-body { padding: 1.3rem; }
+.ingr-row {
+  display: flex; gap: 10px; font-size: 13px;
+  padding: 6px 0; border-bottom: 1px solid var(--border); color: var(--text);
+}
+.ingr-row:last-child { border-bottom: none; }
+.ingr-qty { font-size: 12px; color: var(--text-2); min-width: 85px; flex-shrink: 0; }
+.step-row { display: flex; gap: 10px; font-size: 13px; color: var(--text); line-height: 1.5; margin-bottom: 8px; }
+.step-num {
+  width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 500;
+}
+.apports-box { border-radius: var(--radius-sm); padding: 10px 12px; font-size: 12px; line-height: 1.75; }
+.conseil-box {
+  border-radius: var(--radius-sm); padding: 10px 12px;
+  font-size: 12px; line-height: 1.7;
+  border: 1px solid var(--border); color: var(--text-2);
+  margin-top: 0;
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  text-align: center; padding: 2rem;
+  font-size: 12px; color: var(--text-3);
+  border-top: 1px solid var(--border); margin-top: 3rem;
+}
+
+/* ── EMPTY ── */
+.empty { text-align: center; padding: 3rem 1rem; color: var(--text-3); font-size: 14px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .site-header { padding: 1rem; }
+  .main-nav { padding: 0 1rem; }
+  .page { padding: 1.25rem 1rem; }
+  .info-bar { grid-template-columns: 1fr 1fr; }
+  .day-body { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">
+    <div class="logo-mark">🌿</div>
+    <div class="logo-text">
+      <h1>DrevmCook</h1>
+      <p>Ayurvédique · Tropical · Vegan · Young Boudha · Guadeloupe</p>
+    </div>
+  </div>
+  <span class="header-badge">v3 · 35 recettes</span>
+</header>
+
+<nav class="main-nav">
+  <button class="nav-tab active" onclick="showPage('recettes')">Toutes les recettes</button>
+  <button class="nav-tab" onclick="showPage('saisons')">Saisons</button>
+  <button class="nav-tab" onclick="showPage('semaine')">Menu de la semaine</button>
+  <button class="nav-tab" onclick="showPage('courses')">Liste de courses</button>
+  <button class="nav-tab" onclick="showPage('ingredient')">Par ingrédient</button>
+</nav>
+
+<!-- ══ PAGE : RECETTES ══ -->
+<div id="page-recettes" class="page active">
+  <div class="search-bar">
+    <input type="text" id="recSearch" placeholder="Rechercher recette, ingrédient, bénéfice..." oninput="renderRecettes()">
+  </div>
+  <div class="stats-bar" id="recStats"></div>
+  <div id="recCats" class="season-chips" style="margin-bottom:1.25rem"></div>
+  <div class="rec-grid" id="recGrid"></div>
+</div>
+
+<!-- ══ PAGE : SAISONS ══ -->
+<div id="page-saisons" class="page">
+  <div class="season-chips" id="saisonChips"></div>
+  <div class="month-strip" id="saisonMonths"></div>
+  <div class="info-bar" id="saisonInfo"></div>
+  <div class="sec" id="saisonProdTitle">Produits disponibles</div>
+  <div class="pills-wrap" id="saisonPills"></div>
+  <div class="sec" style="margin-top:20px">Recettes de saison</div>
+  <div class="rec-grid" id="saisonRecs"></div>
+</div>
+
+<!-- ══ PAGE : SEMAINE ══ -->
+<div id="page-semaine" class="page">
+  <div class="month-strip" id="semaineMonths"></div>
+  <div class="sec" id="semaineTitle"></div>
+  <div class="week-grid" id="weekGrid"></div>
+  <div style="margin-top:14px">
+    <button class="btn btn-primary" onclick="showPage('courses')">Générer liste de courses →</button>
+  </div>
+</div>
+
+<!-- ══ PAGE : COURSES ══ -->
+<div id="page-courses" class="page">
+  <div class="month-strip" id="coursesMonths"></div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="courses-actions">
+    <span class="courses-stat" id="coursesStat"></span>
+    <button class="btn" onclick="clearChecked()">Tout décocher</button>
+    <button class="btn" onclick="checkAll()">Tout cocher</button>
+  </div>
+  <div id="coursesList"></div>
+</div>
+
+<!-- ══ PAGE : PAR INGRÉDIENT ══ -->
+<div id="page-ingredient" class="page">
+  <div class="ingr-nav" id="ingrNav"></div>
+  <div id="ingrContent"></div>
+</div>
+
+<!-- ══ MODAL ══ -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modalBox"></div>
+</div>
+
+<footer class="site-footer">
+  DrevmCook v3 · Recettes ayurvédiques tropicales · Guadeloupe · Young Boudha · 100% vegan · sans gluten
+</footer>
+
+<script>
+/* ════════════ DATA ════════════ */
+const SAISONS=[
+  {id:'careme',label:'Carême',mois:[1,2,3,4],color:'#BA7517',bg:'#FAEEDA',tc:'#633806',desc:'Saison sèche · Chaleur vive · Fruits tropicaux abondants'},
+  {id:'trans1',label:'Transition',mois:[5,6],color:'#0F6E56',bg:'#E1F5EE',tc:'#085041',desc:'Premières pluies · Renouveau · Légumes-feuilles'},
+  {id:'hivernage',label:'Hivernage',mois:[7,8,9,10],color:'#185FA5',bg:'#E6F1FB',tc:'#0C447C',desc:'Saison des pluies · Humidité · Racines et courges'},
+  {id:'retour',label:'Retour sec',mois:[11,12],color:'#3B6D11',bg:'#EAF3DE',tc:'#27500A',desc:'Retour du sec · Fraîcheur · Légumineuses'},
+];
+const MOIS=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+const MOIS_S=['Jan','Fév','Mar','Avr','Mai','Jun','Jul','Aoû','Sep','Oct','Nov','Déc'];
+const JOURS=['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
+
+const CAL={
+  1:{t:'26–30°C',p:'Très faible',fruits:['Mangue Julie','Ananas','Maracudja','Papaye','Goyave','Corossol'],legumes:['Giraumon','Aubergine longue','Chayote','Carotte pays','Piment'],racines:['Patate douce','Igname'],aromes:['Cives','Persil','Thym','Basilic péyi']},
+  2:{t:'26–30°C',p:'Très faible',fruits:['Mangue','Ananas','Maracudja','Papaye','Carambole'],legumes:['Giraumon','Aubergine','Chayote','Gombo'],racines:['Patate douce','Igname','Malanga'],aromes:['Cives','Ail','Bois d\'Inde']},
+  3:{t:'27–31°C',p:'Faible',fruits:['Mangue','Ananas','Sapotille','Corossol','Maracudja'],legumes:['Giraumon','Papaye verte','Aubergine','Pois d\'Angole'],racines:['Patate douce','Igname','Fruit à pain'],aromes:['Basilic péyi','Citronnelle','Coriandre']},
+  4:{t:'28–32°C',p:'Faible',fruits:['Mangue','Ananas','Sapotille','Caïmite','Corossol'],legumes:['Pois d\'Angole','Giraumon','Aubergine','Concombre'],racines:['Fruit à pain','Patate douce'],aromes:['Ail','Cives','Oignon pays']},
+  5:{t:'28–31°C',p:'Modérée',fruits:['Mangue','Ananas','Prune de cythère','Barbadine'],legumes:['Pois d\'Angole','Haricots verts','Gombo','Courgette'],racines:['Fruit à pain','Igname','Dasheen'],aromes:['Citronnelle','Basilic','Zèb a pik']},
+  6:{t:'28–31°C',p:'Élevée',fruits:['Prune de cythère','Mangue tardive','Barbadine','Ananas'],legumes:['Gombo','Pois rouges','Calalou (madère)','Haricots'],racines:['Fruit à pain','Dasheen','Malanga'],aromes:['Citronnelle','Herbe à vers','Bois d\'Inde']},
+  7:{t:'27–30°C',p:'Élevée',fruits:['Prune de cythère','Corossol tardif','Papaye','Pomme cythère'],legumes:['Calalou','Gombo','Pois rouges','Aubergine'],racines:['Igname','Malanga','Fruit à pain'],aromes:['Persil','Cives','Menthe pays']},
+  8:{t:'27–30°C',p:'Très élevée',fruits:['Papaye','Prune de cythère','Barbadine','Goyave tardive'],legumes:['Calalou','Pois rouges','Pois savon','Giraumon'],racines:['Igname','Malanga','Dasheen'],aromes:['Ail','Oignon pays','Citronnelle']},
+  9:{t:'27–30°C',p:'Très élevée',fruits:['Papaye','Goyave','Corossol','Citron vert'],legumes:['Pois savon','Pois d\'Angole','Giraumon','Calalou'],racines:['Igname','Malanga','Patate douce'],aromes:['Bois d\'Inde','Herbe à vers','Basilic péyi']},
+  10:{t:'26–29°C',p:'Élevée',fruits:['Goyave','Papaye','Corossol','Maracudja'],legumes:['Pois d\'Angole','Haricots rouges','Giraumon','Chayote'],racines:['Igname','Patate douce','Fruit à pain'],aromes:['Coriandre','Persil','Cives']},
+  11:{t:'25–28°C',p:'Modérée',fruits:['Goyave','Maracudja','Papaye','Ananas'],legumes:['Pois d\'Angole','Giraumon','Chayote','Aubergine'],racines:['Patate douce','Igname','Malanga'],aromes:['Ail','Oignon pays','Citronnelle']},
+  12:{t:'24–27°C',p:'Faible',fruits:['Ananas','Maracudja','Goyave','Corossol'],legumes:['Giraumon','Pois d\'Angole','Aubergine longue','Chayote'],racines:['Patate douce','Igname','Fruit à pain'],aromes:['Bois d\'Inde','Basilic péyi','Citronnelle']},
+};
+
+const CC={
+  plat:{s:'#3B6D11',tb:'#EAF3DE',tc:'#27500A',h:'#3B6D11'},
+  shaker:{s:'#0F6E56',tb:'#E1F5EE',tc:'#085041',h:'#0F6E56'},
+  dessert:{s:'#534AB7',tb:'#EEEDFE',tc:'#3C3489',h:'#534AB7'},
+  masse:{s:'#BA7517',tb:'#FAEEDA',tc:'#633806',h:'#BA7517'},
+  base:{s:'#5F5E5A',tb:'#F1EFE8',tc:'#444441',h:'#5F5E5A'},
+  eau:{s:'#185FA5',tb:'#E6F1FB',tc:'#0C447C',h:'#185FA5'},
+  sante:{s:'#993C1D',tb:'#FAECE7',tc:'#711B0C',h:'#993C1D'},
+};
+const CL={plat:'Plat',shaker:'Shaker',dessert:'Dessert',masse:'Masse',base:'Base',eau:'Eau',sante:'Santé'};
+
+const RECIPES=[
+  {id:1,cat:'plat',name:'Soupe giraumon, coco & curcuma',desc:'Vit. A · anti-inflammatoire · 4g protéines',mois:[1,2,3,4,9,10,11,12],local:['Giraumon','Oignon pays'],
+   ingredients:[{q:'250g',n:'Giraumon'},{q:'120ml',n:'Lait de coco'},{q:'5g',n:'Curcuma frais'},{q:'5g',n:'Gingembre'},{q:'30g',n:'Oignon pays'},{q:'1c.',n:'Huile de coco'},{q:'',n:'Poivre noir'}],
+   steps:['Faire revenir oignon + épices dans l\'huile de coco.','Ajouter giraumon en dés + eau, cuire 15 min.','Verser lait de coco, mixer finement.','Assaisonner, servir chaud.'],
+   apports:'Vitamine A élevée · 4g protéines · antioxydants · anti-inflammatoire',
+   conseil:'Giraumon abondant en carême et retour sec (jan–avr, sep–déc).'},
+  {id:2,cat:'plat',name:'Dahl de pois d\'Angole',desc:'18–20g protéines · fibres · magnésium',mois:[3,4,5,6,9,10,11,12],local:['Pois d\'Angole'],
+   ingredients:[{q:'120g',n:'Pois d\'Angole secs'},{q:'2 gousses',n:'Ail'},{q:'1c.',n:'Cumin'},{q:'1c.',n:'Curry doux'},{q:'100ml',n:'Lait de coco'}],
+   steps:['Tremper les pois 2h, égoutter.','Faire revenir ail + épices.','Ajouter pois + eau, cuire 25 min.','Incorporer lait de coco, mijoter 5 min.'],
+   apports:'18–20g protéines · fibres · magnésium · anti-inflammatoire',
+   conseil:'Pois d\'Angole en saison sèche tardive et post-hivernage (mars–juin, sep–déc).'},
+  {id:3,cat:'plat',name:'Poêlée chayote – papaye verte – basilic péyi',desc:'Enzymes digestives · Vit. C',mois:[1,2,3,10,11,12],local:['Chayote','Papaye verte','Basilic péyi'],isNew:true,
+   ingredients:[{q:'150g',n:'Chayote'},{q:'100g',n:'Papaye verte'},{q:'5 feuilles',n:'Basilic péyi'},{q:'1',n:'Citron vert'},{q:'1c.',n:'Graines de moutarde'}],
+   steps:['Sauter graines de moutarde dans l\'huile.','Ajouter chayote + papaye en julienne, sauter 8 min.','Finir avec basilic + jus de citron vert.'],
+   apports:'Enzymes digestives (papaïne) · vitamine C · antioxydants',
+   conseil:'Chayote disponible toute l\'année, papaye verte idéale en carême.'},
+  {id:4,cat:'plat',name:'Ragoût fruit à pain – lait de coco',desc:'Glucides complexes · fibres',mois:[3,4,5,6,7,8],local:['Fruit à pain','Bois d\'Inde'],isNew:true,
+   ingredients:[{q:'300g',n:'Fruit à pain'},{q:'150ml',n:'Lait de coco'},{q:'2 feuilles',n:'Bois d\'Inde'},{q:'1c.',n:'Curcuma'}],
+   steps:['Couper le fruit à pain en cubes.','Faire revenir avec feuilles de bois d\'Inde.','Verser lait de coco + curcuma, mijoter 15 min.'],
+   apports:'Glucides complexes · amidon résistant · fibres · anti-inflammatoire',
+   conseil:'Fruit à pain abondant de mars à août.'},
+  {id:5,cat:'plat',name:'Curry aubergine – pois chiches – tamarin',desc:'10–12g protéines · fer',mois:[1,2,3,4,11,12],local:['Aubergine longue'],
+   ingredients:[{q:'200g',n:'Aubergine longue'},{q:'120g',n:'Pois chiches'},{q:'1c.',n:'Pâte de tamarin'},{q:'',n:'Curry, cumin, gingembre'}],
+   steps:['Faire revenir épices 2 min.','Ajouter aubergines + tamarin.','Incorporer pois chiches + eau, mijoter 15 min.'],
+   apports:'10–12g protéines · antioxydants · fer',
+   conseil:'Aubergine longue abondante en carême.'},
+  {id:6,cat:'plat',name:'Calalou végétal revisité',desc:'Fer végétal · fibres · mucilages',mois:[6,7,8,9,10],local:['Feuilles de madère','Gombo'],
+   ingredients:[{q:'1 paquet',n:'Feuilles de madère'},{q:'5',n:'Gombos'},{q:'',n:'Haricots rouges + champignons'},{q:'',n:'Oignon, ail, citron'}],
+   steps:['Cuire feuilles avec gombos.','Faire revenir haricots + champignons + épices.','Assembler, fondre à petit feu, finir avec citron.'],
+   apports:'Fer végétal · fibres · mucilages digestifs · antioxydants',
+   conseil:'Madère et gombo au pic de l\'hivernage (juin–oct).'},
+  {id:7,cat:'plat',name:'Migan de fruit à pain – Young Boudha',desc:'Glucides propres · satiété',mois:[4,5,6,7],local:['Fruit à pain','Giraumon'],
+   ingredients:[{q:'1',n:'Fruit à pain (pas trop mûr)'},{q:'200g',n:'Giraumon'},{q:'1',n:'Oignon'},{q:'',n:'Tofu fumé, ail, cives, persil'}],
+   steps:['Couper fruit à pain + giraumon en dés.','Faire revenir tofu + aromates.','Assembler + eau, mijoter jusqu\'à crème naturelle.'],
+   apports:'Glucides complexes · fibres · microbiote-friendly',
+   conseil:'Plat de saison avril–juillet, au pic du fruit à pain.'},
+  {id:8,cat:'plat',name:'Soupe carottes – lentilles corail',desc:'Protéines + lysine · récupération',mois:[1,2,3,11,12],local:['Carotte pays'],isNew:true,
+   ingredients:[{q:'200g',n:'Lentilles corail'},{q:'250g',n:'Carottes'},{q:'1c.',n:'Cumin'},{q:'',n:'Gingembre, curcuma'},{q:'100g',n:'Yaourt coco'}],
+   steps:['Faire revenir carottes + épices.','Ajouter lentilles + 700ml eau, cuire 20 min.','Mixer partiellement, finir avec yaourt coco.'],
+   apports:'Protéines + lysine · bêta-carotène · digestion',
+   conseil:'Carottes de saison sèche en Guadeloupe, idéal carême.'},
+  {id:9,cat:'plat',name:'Dahl lentilles, millet & courge',desc:'~22g protéines · profil aminé complet',mois:[8,9,10,11],local:['Giraumon'],isNew:true,
+   ingredients:[{q:'120g',n:'Lentilles corail'},{q:'80g',n:'Millet'},{q:'200g',n:'Giraumon'},{q:'150ml',n:'Lait de coco'},{q:'50g',n:'Maïs'}],
+   steps:['Cuire millet séparément 15 min.','Faire revenir giraumon + épices.','Ajouter lentilles + eau, cuire 20 min. Assembler.'],
+   apports:'~22g protéines · profil aminé complet · riche en fer · sans gluten',
+   conseil:'Giraumon abondant en fin d\'hivernage (sept–nov).'},
+  {id:10,cat:'plat',name:'Riz kale, wakamé & tofu brouillé',desc:'Iode · calcium · protéines complètes',mois:[1,2,3,4,11,12],local:[],isNew:true,
+   ingredients:[{q:'160g',n:'Riz complet cuit'},{q:'15g',n:'Wakamé réhydraté'},{q:'100g',n:'Chou kale'},{q:'150g',n:'Tofu soyeux'},{q:'1c.s.',n:'Graines de sésame'}],
+   steps:['Faire revenir kale à l\'huile de sésame 3 min.','Ajouter tofu brouillé + curcuma + sel.','Incorporer riz + wakamé, mélanger. Finir sésame.'],
+   apports:'Iode · calcium · vitamine K · protéines complètes',
+   conseil:'Recette toutes saisons, parfaite en carême pour sa légèreté.'},
+  {id:11,cat:'plat',name:'Soupe lentilles blondes – protéines & fer',desc:'20g protéines · fer végétal · vitamine E',mois:[1,2,3,11,12],local:[],isNew:true,
+   ingredients:[{q:'200g',n:'Lentilles blondes'},{q:'30g',n:'Noisettes concassées'},{q:'1c.s.',n:'Sésame noir'},{q:'',n:'Ail, oignon, curcuma, gingembre'},{q:'',n:'Persil frais'}],
+   steps:['Faire revenir oignon + ail + épices.','Ajouter lentilles + eau, cuire 25 min.','Mixer partiellement. Topping : noisettes + sésame + persil.'],
+   apports:'20g protéines · fer végétal élevé · vitamine E · méthionine · calcium',
+   conseil:'Plat de saison sèche, riche et réconfortant.'},
+  {id:12,cat:'shaker',name:'Shaker Bwadchenn – Force & Récupération',desc:'45g glucides · potassium élevé',mois:[1,2,3,4,5,6,7,8,9,10,11,12],local:['Banane'],
+   ingredients:[{q:'1',n:'Banane jaune mûre'},{q:'150ml',n:'Lait de coco frais'},{q:'1c.s.',n:'Farine de manioc'},{q:'1c.',n:'Miel local'},{q:'1 pincée',n:'Cannelle péyi'}],
+   steps:['Mixer tous les ingrédients.','Ajuster consistance avec eau de coco.','Consommer 30 min après le sport.'],
+   apports:'Glucides 45g · Protéines 3g · Lipides 10g · Potassium élevé',
+   conseil:'Banane disponible toute l\'année en Guadeloupe.'},
+  {id:13,cat:'shaker',name:'Shaker Kaz A Fwiti – Masse propre',desc:'50–60g glucides · Vit. C élevée',mois:[1,2,3,4,11,12],local:['Mangue','Goyave'],isNew:true,
+   ingredients:[{q:'1',n:'Mangue locale'},{q:'1',n:'Banane sucrée'},{q:'200ml',n:'Eau de coco fraîche'},{q:'1c.',n:'Poudre de goyave (ou ½ goyave)'},{q:'',n:'Graines de chia ou lin'}],
+   steps:['Mixer mangue + banane + eau de coco.','Ajouter goyave + chia/lin. Mixer lisse.'],
+   apports:'Glucides 50–60g · Fibres 6g · Potassium élevé · Vitamine C forte dose',
+   conseil:'Mangue et goyave au pic en carême (jan–avr).'},
+  {id:14,cat:'shaker',name:'Shaker Racin Péyi – Masse lente',desc:'55g glucides · IG bas · fibres',mois:[1,2,3,4,5,6,7,8,9,10,11,12],local:['Patate douce','Banane plantain'],
+   ingredients:[{q:'100g',n:'Patate douce cuite'},{q:'150ml',n:'Lait végétal'},{q:'1',n:'Banane plantain mûre'},{q:'',n:'Muscade + cannelle'}],
+   steps:['Mixer patate douce + lait végétal.','Ajouter plantain + épices. Mixer lisse.'],
+   apports:'Glucides 55g · Protéines 3–4g · Fibres élevées · IG bas à modéré',
+   conseil:'Patate douce et plantain disponibles toute l\'année.'},
+  {id:15,cat:'shaker',name:'Jus carotte – curcuma – maracudja',desc:'Vitamines A & C · hydratation',mois:[10,11,12,1,2,3],local:['Maracudja','Carotte pays'],
+   ingredients:[{q:'150g',n:'Carottes'},{q:'4g',n:'Curcuma frais'},{q:'1',n:'Maracudja'},{q:'5g',n:'Gingembre'},{q:'150ml',n:'Eau de coco'}],
+   steps:['Extraire jus carottes + gingembre.','Ajouter pulpe maracudja + curcuma râpé.','Compléter avec eau de coco.'],
+   apports:'Vitamines A & C · hydratation · anti-inflammatoire',
+   conseil:'Maracudja et carottes idéaux en saison sèche.'},
+  {id:16,cat:'dessert',name:'Kréyol Gut Boost',desc:'Microbiote · probiotiques · anti-inflammatoire',mois:[4,5,6,10,11,12],local:['Ananas','Goyave','Banane'],
+   ingredients:[{q:'200g',n:'Yaourt végétal fermenté'},{q:'1',n:'Banane péyi mûre'},{q:'80g',n:'Ananas frais'},{q:'1',n:'Goyave rose mixée'},{q:'1c.s.',n:'Graines de chia'},{q:'1 pincée',n:'Cannelle péyi'}],
+   steps:['Mélanger yaourt + purée de goyave.','Ajouter banane écrasée + ananas.','Incorporer chia + cannelle. Repos 10–15 min, servir frais.'],
+   apports:'Probiotiques · bromélaïne · vitamine C · fibres · anti-inflammatoire',
+   conseil:'Ananas et goyave disponibles fin de carême et transition.'},
+  {id:17,cat:'dessert',name:'Panna cotta kéfir–coco "Gwada Gut"',desc:'Probiotiques · MCT · légère',mois:[1,2,3,4,5,6,7,8,9,10,11,12],local:['Mangue Julie'],
+   ingredients:[{q:'150ml',n:'Kéfir de coco'},{q:'100ml',n:'Lait de coco'},{q:'½c.',n:'Agar-agar'},{q:'1c.s.',n:'Miel'},{q:'50g',n:'Mangue Julie (topping)'}],
+   steps:['Chauffer lait de coco + agar-agar jusqu\'à dissolution.','Hors du feu, mélanger avec kéfir.','Sucrer, verser en verrines, réfrigérer 2h.'],
+   apports:'Probiotiques · MCT · texture légère · très digestive',
+   conseil:'Topping mangue Julie de janvier à avril au pic de saveur.'},
+  {id:18,cat:'dessert',name:'Gelée chia – maracudja "Gwozeye Zen"',desc:'Oméga-3 · vitamine C · fibres',mois:[10,11,12,1,2,3],local:['Maracudja'],
+   ingredients:[{q:'200ml',n:'Kéfir de coco'},{q:'2c.s.',n:'Graines de chia'},{q:'1',n:'Maracudja'},{q:'1c.',n:'Miel local'}],
+   steps:['Mélanger kéfir + miel + chia.','Ajouter pulpe de maracudja.','Laisser reposer 20 min.'],
+   apports:'Probiotiques · oméga-3 · vitamine C · fibres',
+   conseil:'Maracudja abondant en transition et carême (oct–mars).'},
+  {id:19,cat:'dessert',name:'Pâte à tartiner chocolat–avocat',desc:'Bons lipides · énergie stable',mois:[1,2,3,4,5,6,7,8,9,10,11,12],local:['Avocat pays'],
+   ingredients:[{q:'180g',n:'Avocat bien mûr'},{q:'2c.s.',n:'Cacao pur non sucré'},{q:'2–3c.s.',n:'Miel ou sirop d\'érable'},{q:'1c.s.',n:'Huile de coco'},{q:'',n:'Sel, vanille locale'}],
+   steps:['Mixer avocat jusqu\'à crème très lisse.','Ajouter cacao, miel, vanille, sel — mixer.','Incorporer huile de coco. Repos 30 min au frais.'],
+   apports:'Bons lipides · flavonoïdes · magnésium · énergie stable · zéro additif',
+   conseil:'Avocat pays disponible presque toute l\'année en Guadeloupe.'},
+  {id:20,cat:'masse',name:'Boulettes patate douce – lentilles corail',desc:'14–16g protéines · IG bas · bêta-carotène',mois:[1,2,3,4,5,6,7,8,9,10,11,12],local:['Patate douce'],
+   ingredients:[{q:'150g',n:'Patate douce'},{q:'80g',n:'Lentilles corail'},{q:'1c.',n:'Cumin'},{q:'',n:'Paprika, curcuma, persil frais'}],
+   steps:['Cuire lentilles + patate douce séparément.','Écraser, mélanger avec épices + persil.','Former des boulettes. Air fryer 200°C — 12 min.'],
+   apports:'14–16g protéines · IG bas · riche en bêta-carotène',
+   conseil:'Patate douce toute l\'année, recette toutes saisons.'},
+  {id:21,cat:'masse',name:'Crème probiotique patate douce – kéfir',desc:'Masse propre · microbiote · IG bas',mois:[1,2,3,4,5,6,7,8,9,10,11,12],local:['Patate douce'],
+   ingredients:[{q:'150g',n:'Patate douce cuite'},{q:'120ml',n:'Kéfir de coco'},{q:'50ml',n:'Lait de coco épais'},{q:'1c.s.',n:'Miel local'},{q:'1 pincée',n:'Cannelle péyi'},{q:'1c.s.',n:'Graines de chia'}],
+   steps:['Mixer patate douce + kéfir + lait de coco.','Ajouter miel, cannelle, chia.','Servir tiède ou frais.'],
+   apports:'Construction musculaire · probiotiques · IG bas · calories de qualité',
+   conseil:'Recette toutes saisons, idéale après séance.'},
+  {id:22,cat:'masse',name:'Shake Young Boudha Mass – plantain',desc:'Probiotiques + calories + anti-inflammatoire',mois:[1,2,3,4,5,6,7,8,9,10,11,12],local:['Banane plantain'],
+   ingredients:[{q:'200ml',n:'Kéfir de coco'},{q:'1',n:'Banane plantain mûre'},{q:'2g',n:'Curcuma frais'},{q:'1c.',n:'Miel'},{q:'1c.',n:'Huile de coco'}],
+   steps:['Mixer tous les ingrédients.','Consommer post-entraînement.'],
+   apports:'Probiotiques · calories propres · anti-inflammatoire · énergie stable',
+   conseil:'Plantain toute l\'année. Mûre pour IG élevé post-sport.'},
+  {id:23,cat:'masse',name:'Crunchy Nuggets végétaux – air fryer',desc:'12–15g protéines · fibres · sulforaphane',mois:[1,2,3,4,5,6,7,8,9,10,11,12],local:[],
+   ingredients:[{q:'300g',n:'Pommes de terre écrasées'},{q:'80g',n:'Protéines soja texturées'},{q:'100g',n:'Petits pois écrasés'},{q:'80g',n:'Brocoli râpé'},{q:'2c.s.',n:'Chapelure sans gluten'},{q:'1c.s.',n:'Yaourt végétal'}],
+   steps:['Mélanger tous les ingrédients.','Former des nuggets.','Air fryer 200°C — 10 min, retourner à mi-cuisson.'],
+   apports:'Protéines 12–15g · Glucides 18g · Fibres 5g',
+   conseil:'Boost : levure maltée + graines de chanvre → 18g protéines/portion.'},
+  {id:24,cat:'masse',name:'Crème cacao post-training (arrow-root)',desc:'Glucides propres · texture premium',mois:[1,2,3,4,5,6,7,8,9,10,11,12],local:[],isNew:true,
+   ingredients:[{q:'200ml',n:'Lait végétal'},{q:'1c.s.',n:'Arrow-root (fécule dictame)'},{q:'1c.s.',n:'Cacao pur'},{q:'1',n:'Datte mixée'},{q:'1c.',n:'Purée d\'amande'}],
+   steps:['Diluer arrow-root dans le lait froid.','Chauffer doucement en fouettant.','Ajouter cacao + datte + purée d\'amande. Fouetter crémeux.'],
+   apports:'Glucides propres · lipides sains · texture premium · IG modéré',
+   conseil:'Recette express toutes saisons, idéale dans les 30 min post-training.'},
+  {id:25,cat:'base',name:'Amandes trempées vivantes',desc:'21g protéines/100g · magnésium · biodisponibilité+',mois:[1,2,3,4,5,6,7,8,9,10,11,12],local:[],
+   ingredients:[{q:'1 poignée',n:'Amandes entières'},{q:'',n:'Eau potable pour immerger'}],
+   steps:['Rincer les amandes soigneusement.','Immerger dans eau potable 12h à température ambiante.','Égoutter, rincer, consommer ou utiliser.'],
+   apports:'21g protéines/100g · vitamine E · magnésium · calcium · antioxydants',
+   conseil:'Conservation 72h au frigo. Base pour fromage végétal, crème dessert, pâte à tartiner.'},
+  {id:26,cat:'base',name:'Base sport – acides aminés essentiels vegan',desc:'Leucine · lysine · méthionine · performance',mois:[1,2,3,4,5,6,7,8,9,10,11,12],local:[],isNew:true,
+   ingredients:[{q:'',n:'Combiner céréales + légumineuses'},{q:'20–30g',n:'Protéines végétales par repas'},{q:'',n:'Quinoa, tofu, tempeh, chanvre, chia'}],
+   steps:['Viser 20–30g protéines végétales par repas.','Associer céréale + légumineuse (acides aminés complémentaires).','Tremper légumineuses avant cuisson.'],
+   apports:'Leucine 2,1–2,8g/j · Lysine 2,1–3,15g/j · Méthionine+cystéine 1,05–1,75g/j (70kg)',
+   conseil:'Ces règles enrichissent tous les bowls, porridges et repas masse propre DrevmCook.'},
+  {id:27,cat:'eau',name:'Eau de gingembre',desc:'Rhume · ballonnements · anti-inflammatoire',mois:[6,7,8,9,10],local:['Gingembre frais'],
+   ingredients:[{q:'5cm',n:'Gingembre frais tranché'},{q:'1L',n:'Eau filtrée'},{q:'',n:'Option : jus de citron'}],
+   steps:['Bouillir eau + gingembre 10 min.','Infuser 20 min hors du feu. Filtrer.','Consommer chaud ou frais.'],
+   apports:'Anti-inflammatoire · digestif · boost immunitaire · anti-nausée',
+   conseil:'Prioritaire en hivernage pour renforcer les défenses face à l\'humidité.'},
+  {id:28,cat:'eau',name:'Eau de citron détox',desc:'Détox · digestion · immunité · peau claire',mois:[1,2,3,4,11,12],local:['Citron vert'],
+   ingredients:[{q:'½',n:'Citron vert pressé'},{q:'250ml',n:'Eau tiède (pas bouillante)'},{q:'',n:'Option : pincée curcuma'}],
+   steps:['Presser le citron dans l\'eau tiède.','Boire à jeun le matin.'],
+   apports:'Détox · digestion · immunité · peau claire',
+   conseil:'Citron vert local abondant en carême, idéal pour la détox de saison sèche.'},
+  {id:29,cat:'eau',name:'Eau de menthe',desc:'Détox · mauvaise haleine · digestion',mois:[1,2,3,4,5,6,7,8,9,10,11,12],local:['Menthe pays'],
+   ingredients:[{q:'10–15 feuilles',n:'Menthe fraîche'},{q:'1L',n:'Eau froide'},{q:'',n:'Option : citron vert'}],
+   steps:['Écraser légèrement les feuilles de menthe.','Infuser dans eau froide 1h au frigo.','Servir avec glaçons.'],
+   apports:'Détox · mauvaise haleine · digestion · immunité · peau saine',
+   conseil:'Menthe disponible toute l\'année, idéale en infusion froide pendant l\'hivernage.'},
+  {id:30,cat:'eau',name:'Eau de concombre',desc:'Détox peau · hydratation · ventre plat',mois:[4,5,6,7,8,9,10],local:['Concombre'],
+   ingredients:[{q:'½',n:'Concombre en rondelles'},{q:'1L',n:'Eau froide'},{q:'',n:'Option : menthe, citron'}],
+   steps:['Trancher le concombre finement.','Infuser dans eau froide 1h au frigo.','Servir très frais.'],
+   apports:'Détox · peau saine · hydratation · anti-nausée · ventre plat',
+   conseil:'Concombre disponible de mai à octobre, parfait pour l\'hydratation en hivernage.'},
+  {id:31,cat:'sante',name:'Anti-parasitaires naturels – protocole',desc:'Ail · graines de courge · ananas · clous',mois:[3,4,5,6],local:['Ail','Ananas','Gingembre'],
+   ingredients:[{q:'2 gousses/j',n:'Ail cru (tue parasites)'},{q:'1 poignée/j',n:'Graines de courge (détruit oeufs)'},{q:'150g/j',n:'Ananas frais (enzymes anti-parasitaires)'},{q:'',n:'Piment de cayenne, carottes crues, clous de girofle'},{q:'1c.s./j',n:'Miel brut (antimicrobien)'}],
+   steps:['Ail cru le matin à jeun (ou en capsule).','Graines de courge broyées dans un smoothie.','Jus ananas + gingembre 1x/jour.','Clous de girofle à mâcher après repas.','Carottes crues râpées au déjeuner.'],
+   apports:'Détox parasitaire · assainissement intestinal · boost digestif · antimicrobien naturel',
+   conseil:'Cure idéale en transition (mars–juin), avant les pluies de l\'hivernage.'},
+  {id:32,cat:'sante',name:'Protocole système nerveux',desc:'Oméga-3 · magnésium · nerf vague',mois:[1,2,3,4,5,6,7,8,9,10,11,12],local:[],
+   ingredients:[{q:'',n:'Oméga-3 : lin, chia, noix, avocat'},{q:'',n:'Vitamines B : légumineuses, grains entiers'},{q:'',n:'Magnésium : amandes, cacao, épinards'},{q:'',n:'Antioxydants : curcuma, gingembre, baies'}],
+   steps:['Alimentation anti-inflammatoire + herbes fraîches + légumes verts.','Stabiliser glycémie : manger toutes 3–5h, protéines à chaque repas.','Nerf vague : respiration profonde, humming, gargarisme.','Sommeil : cycle fixe, pas d\'écrans avant lit, chambre fraîche.'],
+   apports:'Capacité du système nerveux · gestion du stress · autorégulation · réparation',
+   conseil:'Protocole à intensifier en hivernage (plus de stress climatique, humidité).'},
+  {id:33,cat:'sante',name:'Plantes pour la vitalité intime',desc:'Damiana · Maca · Muira Puama · Catuaba',mois:[1,2,3,4,5,6,7,8,9,10,11,12],local:[],
+   ingredients:[{q:'',n:'Damiana (vitalité sexuelle, libido, énergie)'},{q:'',n:'Maca des Andes (équilibre hormonal, drive)'},{q:'',n:'Muira Puama "bois puissance" Amazonie'},{q:'',n:'Catuaba (aphrodisiaque brésilien, SNC)'},{q:'',n:'Icariin / Epimedium (circulation naturelle)'}],
+   steps:['Choisir 1 ou 2 plantes selon besoin.','Infusion : 1c. café / 250ml eau chaude, 10 min.','Ou en poudre dans un shaker matinal.','Combiner avec respiration consciente + connexion au corps.'],
+   apports:'Vitalité intime · équilibre hormonal · énergie · présence corporelle',
+   conseil:'Cure 3 semaines, pause 1 semaine. Combiner avec les pratiques respiratoires.'},
+  {id:34,cat:'plat',name:'Kitchari tropical riz rouge – pois rouges',desc:'12g protéines · antioxydants · énergie durable',mois:[1,2,3,4,11,12],local:['Riz rouge'],
+   ingredients:[{q:'80g',n:'Riz rouge'},{q:'80g',n:'Pois rouges cuits'},{q:'1c.',n:'Curcuma'},{q:'1cm',n:'Gingembre'},{q:'',n:'Graines de fenouil'}],
+   steps:['Faire revenir épices à sec 1 min.','Ajouter riz + 250ml eau, cuire 20 min.','Incorporer pois rouges, mélanger.','Finir avec gingembre râpé.'],
+   apports:'12g protéines · antioxydants · énergie durable',
+   conseil:'Recette ayurvédique équilibrante, idéale en carême.'},
+  {id:35,cat:'dessert',name:'Kéfir de coco "Lévitasyon Kokonò"',desc:'Probiotiques multi-souches · pétillant · régénérant',mois:[1,2,3,4,5,6,7,8,9,10,11,12],local:['Eau de coco'],
+   ingredients:[{q:'1L',n:'Eau de coco fraîche'},{q:'2c.s.',n:'Grains de kéfir'},{q:'1c.',n:'Sucre de canne brut'},{q:'1',n:'Zeste de citron vert'}],
+   steps:['Mettre les grains dans l\'eau de coco.','Ajouter le sucre et le zeste.','Fermenter 24–36h à température ambiante.','Filtrer, mettre en bouteille, réfrigérer.'],
+   apports:'Probiotiques multi-souches · électrolytes · potassium · hydratation profonde',
+   conseil:'Boisson vivante légèrement pétillante. La base de la gamme FVIERS.'},
+];
+
+/* ════════════ STATE ════════════ */
+let activePage='recettes';
+let activeRecCat='all';
+let saisonMonth=new Date().getMonth()+1;
+let semaineMonth=new Date().getMonth()+1;
+let coursesMonth=new Date().getMonth()+1;
+let expandedDays=new Set();
+let checked=new Set();
+let activeIngr=null;
+let weekCache={};
+let shopCache={};
+
+/* ════════════ HELPERS ════════════ */
+function getSaison(m){return SAISONS.find(s=>s.mois.includes(m))||SAISONS[0];}
+function getSaisonForAll(m){return SAISONS.find(s=>s.mois.includes(m))||SAISONS[0];}
+
+function getWeekMenu(m){
+  if(weekCache[m])return weekCache[m];
+  const slots=[
+    {slot:'Petit-déjeuner',cats:['shaker','dessert']},
+    {slot:'Déjeuner',cats:['plat','masse']},
+    {slot:'Dîner',cats:['plat']},
+    {slot:'Post-sport',cats:['shaker','masse']},
+  ];
+  const week=[];
+  const usedIds=[];
+  for(let d=0;d<7;d++){
+    const day={label:JOURS[d],meals:{}};
+    slots.forEach((sl,si)=>{
+      const pool=RECIPES.filter(r=>r.mois.includes(m)&&sl.cats.includes(r.cat)&&!usedIds.includes(r.id));
+      if(pool.length){
+        const pick=pool[(d+si)%pool.length];
+        day.meals[sl.slot]=pick;
+        if(!usedIds.includes(pick.id))usedIds.push(pick.id);
+      }
+    });
+    week.push(day);
+  }
+  weekCache[m]=week;
+  return week;
+}
+
+function buildShopping(m){
+  if(shopCache[m])return shopCache[m];
+  const week=getWeekMenu(m);
+  const raw={};
+  week.forEach(day=>{
+    Object.values(day.meals).forEach(rec=>{
+      if(!rec)return;
+      rec.ingredients.forEach(i=>{
+        if(!i.n||!i.n.trim())return;
+        const k=i.n.toLowerCase().trim();
+        if(!raw[k]){raw[k]={name:i.n,qtys:[],recs:[]};}
+        if(i.q)raw[k].qtys.push(i.q);
+        if(!raw[k].recs.includes(rec.name))raw[k].recs.push(rec.name);
+      });
+    });
+  });
+  const CATS_MAP={
+    'Fruits & légumes locaux':['giraumon','chayote','papaye','aubergine','gombo','carotte','kale','madère','fruit à pain','banane','mangue','ananas','goyave','maracudja','avocat','concombre','cive'],
+    'Légumineuses & féculents':['pois d\'angole','lentille','pois chiche','millet','riz','patate douce','plantain','pomme de terre','maïs','pois rouge','haricot'],
+    'Laitiers végétaux & fermentés':['lait de coco','kéfir','yaourt','lait végétal','eau de coco'],
+    'Protéines végétales':['tofu','tempeh','wakamé','sésame','soja'],
+    'Aromates & épices':['oignon','ail','gingembre','curcuma','cumin','curry','cannelle','bois d\'inde','basilic','cives','persil','thym','vanille','muscade','piment','coriandre'],
+    'Huiles & sucrants':['huile de coco','miel','sirop','purée d\'amande','huile'],
+    'Épicerie sèche':['farine','arrow-root','agar-agar','chia','cacao','datte','amande','noisette','chapelure','arrow'],
+    'Autres':[],
+  };
+  const result={};
+  Object.keys(CATS_MAP).forEach(c=>result[c]=[]);
+  Object.values(raw).forEach(item=>{
+    const n=item.name.toLowerCase();
+    let placed=false;
+    for(const [cat,kws] of Object.entries(CATS_MAP)){
+      if(cat==='Autres')continue;
+      if(kws.some(k=>n.includes(k)||k.includes(n.split(' ')[0]))){
+        result[cat].push(item);placed=true;break;
+      }
+    }
+    if(!placed)result['Autres'].push(item);
+  });
+  shopCache[m]=result;
+  return result;
+}
+
+function getAllIngrs(){
+  const map={};
+  RECIPES.forEach(r=>{
+    r.ingredients.forEach(i=>{
+      if(!i.n||!i.n.trim())return;
+      const k=i.n.toLowerCase().trim();
+      if(!map[k]){map[k]={name:i.n,ids:[]};}
+      if(!map[k].ids.includes(r.id))map[k].ids.push(r.id);
+    });
+  });
+  return Object.values(map).sort((a,b)=>b.ids.length-a.ids.length);
+}
+
+/* ════════════ PAGE ROUTING ════════════ */
+function showPage(p){
+  activePage=p;
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach((tab,i)=>{
+    const pages=['recettes','saisons','semaine','courses','ingredient'];
+    tab.classList.toggle('active',pages[i]===p);
+  });
+  if(p==='recettes')renderRecettes();
+  if(p==='saisons')renderSaisons();
+  if(p==='semaine')renderSemaine();
+  if(p==='courses')renderCourses();
+  if(p==='ingredient')renderIngredient();
+}
+
+/* ════════════ RENDER : RECETTES ════════════ */
+const ALL_CATS=[
+  {id:'all',label:'Tout voir'},
+  {id:'plat',label:'Plats & Soupes'},
+  {id:'shaker',label:'Shakers & Jus'},
+  {id:'dessert',label:'Desserts'},
+  {id:'masse',label:'Prise de masse'},
+  {id:'base',label:'Bases'},
+  {id:'eau',label:'Eaux'},
+  {id:'sante',label:'Santé'},
+];
+
+function renderRecettes(){
+  const q=document.getElementById('recSearch').value.toLowerCase();
+  const filtered=RECIPES.filter(r=>{
+    const mc=activeRecCat==='all'||r.cat===activeRecCat;
+    const mq=!q||r.name.toLowerCase().includes(q)||r.desc.toLowerCase().includes(q)||
+      r.ingredients.some(i=>i.n.toLowerCase().includes(q));
+    return mc&&mq;
+  });
+  const newCount=RECIPES.filter(r=>r.isNew).length;
+  document.getElementById('recStats').innerHTML=
+    `<div class="stat"><span>${RECIPES.length}</span> recettes</div>
+     <div class="stat"><span>+${newCount}</span> nouvelles</div>
+     <div class="stat"><span>100%</span> vegan</div>
+     <div class="stat"><span>${filtered.length}</span> affichées</div>`;
+  document.getElementById('recCats').innerHTML=ALL_CATS.map(c=>
+    `<button class="s-chip${c.id===activeRecCat?' active':''}" style="${c.id===activeRecCat?'background:'+CC[c.id]?.h+'||\'#3B6D11\';':''}" onclick="setRecCat('${c.id}')">${c.label}</button>`
+  ).join('');
+  // fix active color
+  document.querySelectorAll('#recCats .s-chip.active').forEach(b=>{b.style.background='#3B6D11';});
+  if(!filtered.length){document.getElementById('recGrid').innerHTML='<div class="empty">Aucune recette trouvée.</div>';return;}
+  document.getElementById('recGrid').innerHTML=filtered.map(r=>{
+    const c=CC[r.cat];
+    return `<div class="rec-card" onclick="openModal(${r.id})">
+      <div class="rc-stripe" style="background:${c.s}"></div>
+      <div class="rc-body">
+        <span class="rc-cat" style="background:${c.tb};color:${c.tc}">${CL[r.cat]}</span>${r.isNew?'<span class="rc-new">nouveau</span>':''}
+        <h3>${r.name}</h3>
+        <p>${r.desc}</p>
+        ${r.local&&r.local.length?`<div class="rc-local">Saison : ${r.local.slice(0,2).join(', ')}</div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function setRecCat(id){activeRecCat=id;renderRecettes();}
+
+/* ════════════ RENDER : SAISONS ════════════ */
+function renderSaisons(){
+  const s=getSaison(saisonMonth);
+  document.getElementById('saisonChips').innerHTML=SAISONS.map(sn=>
+    `<button class="s-chip${sn.id===s.id?' active':''}" style="${sn.id===s.id?'background:'+sn.color+';':''}" onclick="setSaisonSeason('${sn.id}')">${sn.label}</button>`
+  ).join('');
+  document.getElementById('saisonMonths').innerHTML=MOIS_S.map((mn,i)=>{
+    const ms=getSaison(i+1); const isSel=i+1===saisonMonth;
+    return `<button class="m-btn${isSel?' active':''}" style="${isSel?'background:'+ms.color+';color:white;':''}" onclick="setSaisonMonth(${i+1})">${mn}</button>`;
+  }).join('');
+  const cal=CAL[saisonMonth];
+  document.getElementById('saisonInfo').innerHTML=
+    `<div class="info-card"><div class="lbl">Saison</div><div class="val" style="color:${s.color}">${s.label}</div></div>
+     <div class="info-card"><div class="lbl">Température</div><div class="val">${cal.t}</div></div>
+     <div class="info-card"><div class="lbl">Précipitations</div><div class="val">${cal.p}</div></div>`;
+  const type={fruit:{bg:'#FAEEDA',c:'#633806'},legume:{bg:'#EAF3DE',c:'#27500A'},racine:{bg:'#E6F1FB',c:'#0C447C'},arome:{bg:'#EEEDFE',c:'#3C3489'}};
+  document.getElementById('saisonPills').innerHTML=[
+    ...cal.fruits.map(p=>`<span class="pill" style="background:${type.fruit.bg};color:${type.fruit.c}">${p}</span>`),
+    ...cal.legumes.map(p=>`<span class="pill" style="background:${type.legume.bg};color:${type.legume.c}">${p}</span>`),
+    ...cal.racines.map(p=>`<span class="pill" style="background:${type.racine.bg};color:${type.racine.c}">${p}</span>`),
+    ...cal.aromes.map(p=>`<span class="pill" style="background:${type.arome.bg};color:${type.arome.c}">${p}</span>`),
+  ].join('');
+  const recs=RECIPES.filter(r=>r.mois.includes(saisonMonth));
+  document.getElementById('saisonRecs').innerHTML=recs.length
+    ?recs.map(r=>{const c=CC[r.cat];return`<div class="rec-card" onclick="openModal(${r.id})"><div class="rc-stripe" style="background:${c.s}"></div><div class="rc-body"><span class="rc-cat" style="background:${c.tb};color:${c.tc}">${CL[r.cat]}</span><h3>${r.name}</h3><p>${r.desc}</p><div class="rc-local">${r.local&&r.local.length?r.local.join(', '):'toutes saisons'}</div></div></div>`;}).join('')
+    :'<div class="empty">Aucune recette ce mois-ci.</div>';
+}
+
+function setSaisonMonth(m){saisonMonth=m;renderSaisons();}
+function setSaisonSeason(id){const s=SAISONS.find(x=>x.id===id);if(s){saisonMonth=s.mois[0];renderSaisons();}}
+
+/* ════════════ RENDER : SEMAINE ════════════ */
+function renderSemaine(){
+  const s=getSaison(semaineMonth);
+  document.getElementById('semaineMonths').innerHTML=MOIS_S.map((mn,i)=>{
+    const ms=getSaison(i+1);const isSel=i+1===semaineMonth;
+    return`<button class="m-btn${isSel?' active':''}" style="${isSel?'background:'+ms.color+';color:white;':''}" onclick="setSemaineMonth(${i+1})">${mn}</button>`;
+  }).join('');
+  document.getElementById('semaineTitle').textContent=`Menu · ${MOIS[semaineMonth-1]} · ${s.label}`;
+  const week=getWeekMenu(semaineMonth);
+  document.getElementById('weekGrid').innerHTML=week.map((day,di)=>{
+    const isOpen=expandedDays.has(semaineMonth+'-'+di);
+    const chips=Object.entries(day.meals).map(([slot,rec])=>
+      `<span class="day-chip">${rec.name.length>25?rec.name.slice(0,23)+'…':rec.name}</span>`
+    ).join('');
+    const mealCards=Object.entries(day.meals).map(([slot,rec])=>{
+      const c=CC[rec.cat];
+      return`<div class="meal-card" style="border-left-color:${c.s}">
+        <div class="mc-slot">${slot}</div>
+        <div class="mc-name" onclick="openModal(${rec.id})">${rec.name}</div>
+        <div class="mc-info">${rec.desc}</div>
+      </div>`;
+    }).join('');
+    return`<div class="day-row">
+      <div class="day-hdr${isOpen?' open':''}" onclick="toggleDay(${semaineMonth},${di})">
+        <span class="day-label">${day.label}</span>
+        <span class="day-saison" style="background:${s.bg};color:${s.tc}">${s.label}</span>
+        <div class="day-chips">${chips}</div>
+        <span class="day-toggle">${isOpen?'▲':'▼'}</span>
+      </div>
+      <div class="day-body${isOpen?'':' collapsed'}">${mealCards}</div>
+    </div>`;
+  }).join('');
+}
+
+function setSemaineMonth(m){semaineMonth=m;expandedDays=new Set();renderSemaine();}
+function toggleDay(m,di){
+  const k=m+'-'+di;
+  if(expandedDays.has(k))expandedDays.delete(k);else expandedDays.add(k);
+  renderSemaine();
+}
+
+/* ════════════ RENDER : COURSES ════════════ */
+const CATS_COLORS={
+  'Fruits & légumes locaux':{bg:'#EAF3DE',c:'#27500A'},
+  'Légumineuses & féculents':{bg:'#FAEEDA',c:'#633806'},
+  'Laitiers végétaux & fermentés':{bg:'#E6F1FB',c:'#0C447C'},
+  'Protéines végétales':{bg:'#E1F5EE',c:'#085041'},
+  'Aromates & épices':{bg:'#EEEDFE',c:'#3C3489'},
+  'Huiles & sucrants':{bg:'#FAEEDA',c:'#633806'},
+  'Épicerie sèche':{bg:'#F1EFE8',c:'#444441'},
+  'Autres':{bg:'#F1EFE8',c:'#444441'},
+};
+
+function renderCourses(){
+  document.getElementById('coursesMonths').innerHTML=MOIS_S.map((mn,i)=>{
+    const ms=getSaison(i+1);const isSel=i+1===coursesMonth;
+    return`<button class="m-btn${isSel?' active':''}" style="${isSel?'background:'+ms.color+';color:white;':''}" onclick="setCoursesMonth(${i+1})">${mn}</button>`;
+  }).join('');
+  const shop=buildShopping(coursesMonth);
+  const allItems=Object.values(shop).flat();
+  const total=allItems.length;
+  const done=allItems.filter(i=>checked.has(i.name.toLowerCase())).length;
+  const pct=total?Math.round(done/total*100):0;
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('coursesStat').textContent=`${done}/${total} articles cochés (${pct}%)`;
+  let html='';
+  Object.entries(shop).forEach(([cat,items])=>{
+    if(!items.length)return;
+    const cc=CATS_COLORS[cat]||CATS_COLORS['Autres'];
+    const doneCat=items.filter(i=>checked.has(i.name.toLowerCase())).length;
+    html+=`<div class="cat-section">
+      <div class="cat-hdr">
+        <span class="cat-name">${cat}</span>
+        <span class="cat-count" style="background:${cc.bg};color:${cc.c}">${doneCat}/${items.length}</span>
+      </div>
+      <div class="cat-items">`;
+    items.forEach(item=>{
+      const k=item.name.toLowerCase();
+      const isDone=checked.has(k);
+      const qty=[...new Set(item.qtys)].join(', ')||'qté à ajuster';
+      const uses=item.recs.length>1?`${item.recs.length} recettes`:(item.recs[0]||'').slice(0,28);
+      html+=`<div class="item-row" onclick="toggleCheck('${k.replace(/'/g,"\\'")}')">
+        <div class="item-check${isDone?' done':''}"></div>
+        <span class="item-name${isDone?' done':''}">${item.name}</span>
+        <span class="item-qty">${qty}</span>
+        <span class="item-uses">${uses}</span>
+      </div>`;
+    });
+    html+=`</div></div>`;
+  });
+  document.getElementById('coursesList').innerHTML=html;
+}
+
+function setCoursesMonth(m){coursesMonth=m;shopCache={};renderCourses();}
+function toggleCheck(k){if(checked.has(k))checked.delete(k);else checked.add(k);renderCourses();}
+function clearChecked(){checked.clear();renderCourses();}
+function checkAll(){buildShopping(coursesMonth);Object.values(shopCache[coursesMonth]||{}).flat().forEach(i=>checked.add(i.name.toLowerCase()));renderCourses();}
+
+/* ════════════ RENDER : PAR INGRÉDIENT ════════════ */
+function renderIngredient(){
+  const all=getAllIngrs();
+  if(!activeIngr&&all[0])activeIngr=all[0].name.toLowerCase();
+  document.getElementById('ingrNav').innerHTML=all.slice(0,35).map(i=>{
+    const isA=i.name.toLowerCase()===activeIngr;
+    return`<button class="ingr-pill${isA?' active':''}" onclick="setIngr('${i.name.toLowerCase().replace(/'/g,"\\'").replace(/"/g,'&quot;')}')">${i.name} <span class="ingr-count">${i.ids.length}</span></button>`;
+  }).join('');
+  if(!activeIngr){document.getElementById('ingrContent').innerHTML='';return;}
+  const ingrData=all.find(i=>i.name.toLowerCase()===activeIngr);
+  if(!ingrData){document.getElementById('ingrContent').innerHTML='';return;}
+  const recs=RECIPES.filter(r=>ingrData.ids.includes(r.id));
+  const moisDispo=[...new Set(recs.flatMap(r=>r.mois))].sort((a,b)=>a-b);
+  let html=`<div class="sec">${ingrData.name} · ${recs.length} recette${recs.length>1?'s':''} · Disponible : ${moisDispo.map(m=>MOIS_S[m-1]).join(', ')}</div>`;
+  html+=`<div class="rec-grid">`;
+  recs.forEach(r=>{
+    const c=CC[r.cat];
+    const match=r.ingredients.find(i=>i.n.toLowerCase().includes(activeIngr.split(' ')[0]));
+    html+=`<div class="ingr-rec-card rec-card" onclick="openModal(${r.id})">
+      <div class="rc-stripe" style="background:${c.s}"></div>
+      <div class="rc-body">
+        <span class="rc-cat" style="background:${c.tb};color:${c.tc}">${CL[r.cat]}</span>
+        <h3>${r.name}</h3>
+        <p>${r.desc}</p>
+        ${match&&match.q?`<div class="rc-local">${match.q} de ${match.n}</div>`:''}
+      </div>
+    </div>`;
+  });
+  html+=`</div>`;
+  document.getElementById('ingrContent').innerHTML=html;
+}
+
+function setIngr(n){activeIngr=n;renderIngredient();}
+
+/* ════════════ MODAL ════════════ */
+function openModal(id){
+  const r=RECIPES.find(x=>x.id===id);if(!r)return;
+  const c=CC[r.cat];
+  const s=getSaison(saisonMonth);
+  document.getElementById('modalBox').innerHTML=`
+    <div class="modal-hdr" style="background:${c.h}">
+      <div>
+        <div class="modal-meta">${CL[r.cat]}${r.isNew?' · nouveau':''} · ${r.mois.map(m=>MOIS_S[m-1]).join(', ')}</div>
+        <h2>${r.name}</h2>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="sec">Ingrédients</div>
+      ${r.ingredients.filter(i=>i.n).map(i=>`<div class="ingr-row"><span class="ingr-qty">${i.q}</span><span>${i.n}</span></div>`).join('')}
+      <div class="sec" style="margin-top:16px">Préparation</div>
+      ${r.steps.map((step,i)=>`<div class="step-row"><div class="step-num" style="background:${c.tb};color:${c.tc}">${i+1}</div><div>${step}</div></div>`).join('')}
+      <div class="sec" style="margin-top:16px">Apports nutritifs</div>
+      <div class="apports-box" style="background:${c.tb};color:${c.tc}">${r.apports}</div>
+      ${r.conseil?`<div class="sec" style="margin-top:12px">Conseil saisonnier</div><div class="conseil-box">${r.conseil}</div>`:''}
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal(e){
+  if(!e||e.target===document.getElementById('modalOverlay'))
+    document.getElementById('modalOverlay').classList.remove('open');
+}
+
+/* ════════════ INIT ════════════ */
+renderRecettes();
+</script>
+</body>
+</html>
