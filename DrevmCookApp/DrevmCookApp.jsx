@@ -1,4 +1,4 @@
-import { recipes } from "./src/data/recipes";
+import { recipes } from "../DrevmCook/src/data/recipes";
 import RecipeCard from "./src/components/RecipeCard";
 import FermentationGuide from "./src/components/FermentationGuide";
 import Herbarium from "./src/components/Herbarium";
