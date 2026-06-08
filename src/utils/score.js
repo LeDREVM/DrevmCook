@@ -1,35 +1,14 @@
 export function computeScore(recipe) {
+  const tags = recipe.tags || [];
+  const text = tags.join(' ').toLowerCase();
 
+  return {
+    protein:    text.includes('protéine')           ? 2 : 0,
+    antiInflam: text.includes('anti-inflammatoire') ? 2 : 0,
+    energy:     text.includes('énergie') || text.includes('récupération') ? 2 : 0,
+  };
+}
 
-    let score = {
-        protein: 0,
-        antiInflammatory: 0,
-        energy: 0
-      };
-    
-  
-    recipe.ingredients.forEach(i => {
-      if (i.name.includes("lentilles")) score += 2;
-      if (i.name.includes("gingembre")) score += 2;
-        
-      if (i.name.includes("pois") || i.name.includes("lentilles"))
-        score.protein += 2;
-  
-      if (i.name.includes("gingembre") || i.name.includes("curcuma"))
-        score.antiInflammatory += 2;
-  
-      if (i.name.includes("banane") || i.name.includes("riz"))
-        score.energy += 2;
-    });
-  
-
-
-
-
-
-
-
-
-    
-    return score;
-  }
+export function scoreTotal(score) {
+  return score.protein + score.antiInflam + score.energy;
+}
